@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuda | Assignment_1</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <style>
+        *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  list-style: none;
+  text-decoration: none;
+}
+
+/* navbar css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  background-color: purple;
+  padding: 10px;
+}
+.navbar img {
+  margin-left: 25px;
+}
+.nav-ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-right: 70px;
+}
+.nav-li a {
+  font-size: 23px;
+  color: white;
+  transition: all 0.4s ease-in-out;
+}
+.nav-li a:hover {
+  color: black;
+}
+
+/* hamburger menu css */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+.bar {
+  display: block;
+  height: 4px;
+  width: 35px;
+  background-color: white;
+  border-radius: 17px;
+  margin: 5px;
+}
+
+/* first section css */
+.first-section {
+  height: 50vh;
+  width: 100%;
+  background-color: purple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.first-section h1 {
+  color: white;
+  margin: 5px 0px;
+}
+.btn {
+  height: 45px;
+  width: 180px;
+  background-color: rgb(255, 104, 48);
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: all 0.2s ease-in-out;
+}
+.btn:hover {
+  background-color: rgb(233, 92, 41);
+}
+
+/* second section css */
+
+.second-section {
+  height: 70vh;
+  width: 100%;
+  background-color: #25adad;
+  padding: 15px;
+}
+
+.heading_1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+.heading_1 h2 {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.heading_1 span {
+  margin-top: 10px;
+  display: block;
+  width: 80px;
+  height: 2px;
+  background-color: black;
+  border-radius: 10px;
+}
+.heading_1 p {
+  color: white;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.second-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.second-mini-box {
+  height: 350px;
+  width: 300px;
+  /* background-color: aquamarine; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+.second-mini-box h2 {
+  color: white;
+  margin-top: 25px;
+}
+.second-mini-box p {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Third section css */
+.third-section {
+  height: 85vh;
+  width: 100%;
+  /* background-color: #cedfe1; */
+  background-color: #e7eaf6;
+  padding: 10px;
+}
+
+.heading_2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+.heading_2 h2 {
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.heading_2 span {
+  margin-top: 10px;
+  display: block;
+  width: 80px;
+  height: 2px;
+  background-color: black;
+  border-radius: 10px;
+}
+.heading_2 p {
+  color: black;
+  margin-top: 20px;
+  font-size: 15px;
+}
+.third-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.third-mini-box {
+  height: 400px;
+  width: 300px;
+  /* background-color: aquamarine; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  margin: 25px 10px;
+}
+.third-mini-box img {
+  height: 170px;
+  width: auto;
+  border-radius: 50%;
+}
+.third-mini-box h2 {
+  text-transform: capitalize;
+  margin-top: 20px;
+}
+
+.third-mini-box h4 {
+  font-size: 13px;
+  color: blue;
+  margin-top: 18px;
+}
+.third-mini-box p {
+  text-align: center;
+  line-height: 24px;
+  margin-top: 17px;
+}
+.icons {
+  margin-top: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+.icons img {
+  padding: 6px;
+  background-color: #9f9f9f;
+  height: 35px;
+  width: auto;
+  margin: 7px;
+  cursor: pointer;
+}
+
+/* Forth section css */
+.forth-section {
+  height: 65vh;
+  width: 100%;
+  /* background-color: #e5e5e5; */
+  /* padding: 10px; */
+}
+
+.forth-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.forth-mini-box {
+  height: 350px;
+  width: 300px;
+  /* background-color: aquamarine; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* padding: 10px; */
+}
+
+.forth-mini-box img {
+  position: relative;
+}
+.forth-mini-box h1 {
+  position: absolute;
+  font-size: 45px;
+}
+
+.forth-mini-box h2 {
+  margin-top: 30px;
+}
+
+/* Fifth section css */
+.fifth-section {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(255, 211, 131);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.fifth-section-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.fifth-btn {
+  padding: 7px 15px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  background-color: #25adad;
+  font-size: 18px;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.fifth-btn:hover {
+  background-color: #258f8f;
+}
+.fifth-bottom-btn {
+  padding: 7px 43px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  background-color: #25adad;
+  font-size: 18px;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.fifth-bottom-btn:hover {
+  background-color: #258f8f;
+}
+.fifth-box {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 25px;
+  width: 70%;
+  flex-wrap: wrap;
+}
+
+.fifth-box img {
+  margin-top: 10px;
+  height: 240px;
+  width: auto;
+  cursor: pointer;
+}
+
+.fifth-box h3 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+/* Sixth section css */
+.sixth-section{
+  height: 100%;
+  width: 100%;
+  background-color: #f54e9c;
+}
+
+.sixth-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.sixth-mini-box{
+  height: 350px;
+  width: 300px;
+  /* background-color: aquamarine; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+.sixth-mini-box img {
+  height: 170px;
+  width: auto;
+  border-radius: 50%;
+}
+
+.sixth-mini-box p{
+  color: white;
+  margin-top: 15px;
+  text-align: center;
+}
+.sixth-mini-box h3{
+  color: white;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.sixth-mini-box h4{
+  color: rgb(255, 199, 96);
+  margin-top: 20px;
+}
+
+/* Seventh section css */
+
+.seventh-section{
+  height: 70vh;
+  width: 100%;
+  background-color: #004b7d;
+ 
+}
+
+
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-direction: column;
+ 
+}
+.form textarea{
+  resize: none;
+  width: 720px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  background-color: #003b63;
+  color: white;
+}
+.form input{
+  height: 40px;
+  width: 350px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  background-color: #003b63;
+  color: white;
+}
+.form-btn{
+  height: 40px;
+  width: 430px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  background-color: #003b63;
+  color: white;
+  cursor: pointer;
+}
+.input1{
+  display: flex;
+  gap: 25px;
+}
+
+/* Seventh section css */
+.footer{
+  height: 10vh;
+  width: 100%;
+  background-color: #004674;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+}
+.footer-li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.footer-li a{
+  color: white;
+  font-size: 20px;
+  transition: all 0.4s ease-in-out;
+}
+.footer-li a:hover{
+  color: black;
+  
+}
+
+
+
+
+
+/******* css for responsive screens******* */
+
+@media screen and (max-width: 750px) {
+  .navbar img {
+    height: 30px;
+    width: auto;
+  }
+  .nav-ul {
+    display: none;
+  }
+  .second-section {
+    height: 100%;
+    /* background-color: #66bfbf; */
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .navbar img {
+    height: 27px;
+    width: auto;
+  }
+  .first-section {
+    padding: 15px;
+  }
+  .first-section h1 {
+    font-size: 17px;
+    text-align: center;
+  }
+  .btn {
+    height: 35px;
+    width: 150px;
+    font-size: 10px;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .second-section {
+    height: 100%;
+    background-color: #25adad;
+  }
+  .third-section {
+    height: 100%;
+    background-color: #bbe4e9;
+  }
+  .forth-section {
+    height: 100%;
+    /* background-color: #e5e5e5; */
+  }
+
+  .sixth-section{
+    height: 100%;
+    
+    background-color: #f54e9c;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <img src="./assets/logo.png" alt="" />
+
+        <ul class="nav-ul">
+          <div class="nav-li"><a href="#">Home</a></div>
+          <div class="nav-li"><a href="#">About</a></div>
+          <div class="nav-li"><a href="#">Work</a></div>
+          <div class="nav-li"><a href="#">Blog</a></div>
+          <div class="nav-li"><a href="#">Contact</a></div>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ===================================================First Section Start============================================= -->
+    <section class="first-section">
+      <h1>Hi there! We are the new kids on the block</h1>
+      <h1>and we build awesome websites and mobile apps.</h1>
+      <button class="btn">Work With Us</button>
+    </section>
+
+    <!-- ===================================================Second Section Start============================================= -->
+    <section class="second-section">
+      <div class="heading_1">
+        <h2>Services We Provide</h2>
+        <span class="line"></span>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure ex quos
+          reiciendis adipisci eos minima. Lorem ipsum dolor sit.
+        </p>
+      </div>
+
+      <div class="second-box">
+        <div class="second-mini-box">
+          <img src="./assets/flag.png" alt="" />
+          <h2>Branding</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur a amet Lorem ipsum, dolor sit
+            ame.
+          </p>
+        </div>
+
+        <div class="second-mini-box">
+          <img src="./assets/pencile.png" alt="" />
+          <h2>Design</h2>
+          <p>Lorem ipsum dolor sit amet t amet Lorem ipsum, dolor sit ame.</p>
+        </div>
+
+        <div class="second-mini-box">
+          <img src="./assets/setti.png" alt="" />
+          <h2>Developement</h2>
+          <p>Lorem ipsum dolor sit a sit amet Lorem ipsum, dolor sit ame.</p>
+        </div>
+
+        <div class="second-mini-box">
+          <img src="./assets/rok.png" alt="" />
+          <h2>Rocket Science</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur Lorem ipsum, dolor sit ame.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================Third Section Start=============================================  -->
+    <section class="third-section">
+      <div class="heading_2">
+        <h2>Meet Our Beautiful Team</h2>
+        <span class="line"></span>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure ex quos
+          reiciendis adipisci .
+        </p>
+      </div>
+
+      <div class="third-box">
+        <div class="third-mini-box">
+          <img src="./assets/adriana-lima.jpg" alt="" />
+          <h2>Anne Hathaway</h2>
+          <h4>Ceo Marketing</h4>
+          <p>
+            Lorem ipsum dolor sit amet consectetur Lorem, dolor. debitis facilis
+            optio? ?
+          </p>
+          <div class="icons">
+            <img src="./assets/Linkedin.png" alt="" />
+            <img src="./assets/Fb.png" alt="" />
+            <img src="./assets/Twitter.png" alt="" />
+            <img src="./assets/Mail.png" alt="" />
+          </div>
+        </div>
+
+        <div class="third-mini-box">
+          <img src="./assets/Ashley-Greene.jpg" alt="" />
+          <h2>Kate Upton</h2>
+          <h4>Cretive Director</h4>
+          <p>
+            Lorem ipsum dolor sit amet t. Repellat et debitis facilis optio?
+            Soluta ad totam?
+          </p>
+          <div class="icons">
+            <img src="./assets/Linkedin.png" alt="" />
+            <img src="./assets/Fb.png" alt="" />
+            <img src="./assets/Twitter.png" alt="" />
+            <img src="./assets/Mail.png" alt="" />
+          </div>
+        </div>
+
+        <div class="third-mini-box">
+          <img src="./assets/Kate-Upton.jpg" alt="" />
+          <h2>Olivia Wilde</h2>
+          <h4>Lead Designer</h4>
+          <p>
+            Lorem ipsum dolor adipisicing elit. Repellat et debitis facilis
+            libero atque totam?
+          </p>
+          <div class="icons">
+            <img src="./assets/Linkedin.png" alt="" />
+            <img src="./assets/Fb.png" alt="" />
+            <img src="./assets/Twitter.png" alt="" />
+            <img src="./assets/Mail.png" alt="" />
+          </div>
+        </div>
+
+        <div class="third-mini-box">
+          <img src="./assets/anne-hathaway.jpg" alt="" />
+          <h2>Ashley Greene</h2>
+          <h4>SEO/Developer</h4>
+          <p>
+            Lorem ipsum dolor sit amet consectetur debitis facilis atque totam?
+          </p>
+          <div class="icons">
+            <img src="./assets/Linkedin.png" alt="" />
+            <img src="./assets/Fb.png" alt="" />
+            <img src="./assets/Twitter.png" alt="" />
+            <img src="./assets/Mail.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================Forth Section Start============================================= -->
+
+    <section class="forth-section">
+      <div class="heading_2">
+        <h2>We got Skills!</h2>
+        <span class="line"></span>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure ex
+          quos.
+        </p>
+      </div>
+
+      <div class="forth-box">
+        <div class="forth-mini-box">
+          <img src="./assets/pro1.png" alt="" />
+          <h1>90%</h1>
+          <h2>Web Design</h2>
+        </div>
+
+        <div class="forth-mini-box">
+          <img src="./assets/pro2.png" alt="" />
+          <h1>75%</h1>
+          <h2>Html/CSS</h2>
+        </div>
+
+        <div class="forth-mini-box">
+          <img src="./assets/pro3.png" alt="" />
+          <h1>70%</h1>
+          <h2>Graphic Design</h2>
+        </div>
+
+        <div class="forth-mini-box">
+          <img src="./assets/pro4.png" alt="" />
+          <h1>85%</h1>
+          <h2>UI/UX</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================Fifth Section Start============================================= -->
+    <section class="fifth-section">
+      <div class="heading_2">
+        <h2>Our Portfolio</h2>
+        <span class="line"></span>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure ex quos
+          Lorem ipsum dolor sit amet, consectetur adipisicing..
+        </p>
+      </div>
+
+      <div class="fifth-section-btn">
+        <button class="fifth-btn">All</button>
+        <button class="fifth-btn">Web</button>
+        <button class="fifth-btn">Arts</button>
+        <button class="fifth-btn">Icons</button>
+      </div>
+
+      <div class="fifth-box">
+        <div class="fifth-mini-box">
+          <img src="/assets/isomatric.png" alt="" />
+          <h3>Lorem, ipsum dolor.</h3>
+        </div>
+
+        <div class="fifth-mini-box">
+          <img src="/assets/timezone.png" alt="" />
+          <h3>Lorem, ipsum dolor.</h3>
+        </div>
+      </div>
+
+      <div class="fifth-box">
+        <div class="fifth-mini-box">
+          <img src="/assets/viro.png" alt="" />
+          <h3>Lorem, ipsum dolor.</h3>
+        </div>
+
+        <div class="fifth-mini-box">
+          <img src="/assets/blog.png" alt="" />
+          <h3>Lorem, ipsum dolor.</h3>
+        </div>
+      </div>
+      <button class="fifth-bottom-btn">Load More Projects</button>
+    </section>
+
+    <!--===================================================Sixth Section Start=============================================-->
+
+    <section class="sixth-section">
+      <div class="heading_1">
+        <h2>What People Says About Us</h2>
+        <span class="line"></span>
+        <p>Our Clients Love Us!</p>
+      </div>
+
+      <div class="sixth-box">
+        <div class="sixth-mini-box">
+          <img src="./assets/anne-hathaway.jpg" alt="" />
+          <p>
+            "Lorem ipsum dolor sit amet consectetur debitis facilis atque totam?
+            Lorem amet consectetur adipisicing elit"
+          </p>
+          <h3>Anne Hathaway</h3>
+          <h4>Ceo Of Placement</h4>
+        </div>
+
+        <div class="sixth-mini-box">
+          <img src="./assets/adriana-lima.jpg" alt="" />
+          <p>
+            "Lorem ipsum dolor sit amet consectetur debitis facilis atque totam?
+            Lorem amet consectetur adipisicing elit"
+          </p>
+          <h3>Kate Upton</h3>
+          <h4>Founder of Instagram</h4>
+        </div>
+
+        <div class="sixth-mini-box">
+          <img src="./assets/anne.jpg" alt="" />
+          <p>
+            "Lorem ipsum dolor sit amet consectetur debitis facilis atque totam?
+            Lorem Lorem ipsum dolor sit amet. amet consectetur adipisicing elit"
+          </p>
+          <h3>Olivia Wilde</h3>
+          <h4>Lead Designer</h4>
+        </div>
+
+        <div class="sixth-mini-box">
+          <img src="./assets/Chanel-Iman.jpeg" alt="" />
+          <p>
+            "Lorem ipsum dolor sit amet consectetur debitis facilis atque totam?
+            Lorem amet consectetur adipisicing elit"
+          </p>
+          <h3>Ashley Greene</h3>
+          <h4>Co-Founder</h4>
+        </div>
+      </div>
+    </section>
+
+    <!--===================================================Seventh Section Start=============================================-->
+
+    <section class="seventh-section">
+      <div class="heading_1">
+        <h2>Get In Touch</h2>
+        <span class="line"></span>
+        <p>
+          1600, Lorem, ipsum dolor, Washigton DC,202020, United States of
+          America Tel:(202)456-1121
+        </p>
+      </div>
+
+      <form action="#" class="form">
+        <div class="input1">
+          <input type="text" placeholder="Your Name*" required />
+          <input type="email" name="email" placeholder="Your Email*" required />
+        </div>
+
+        <textarea
+          name="textarea"
+          cols="30"
+          rows="10"
+          placeholder="Your Messege*"
+          required
+        ></textarea>
+
+        <button type="submit" class="form-btn">Send Messege</button>
+      </form>
+    </section>
+
+     <!--===================================================Footer Section Start=============================================-->
+     <footer class="footer">
+      <ul class="footer-ul">
+        <li class="footer-li"><a href="#">Facebook</a></li>
+        <li class="footer-li"><a href="#">Twitter</a></li>
+        <li class="footer-li"><a href="#">Google+</a></li>
+        <li class="footer-li"><a href="#">LinkedIn</a></li>
+        <li class="footer-li"><a href="#">Behance</a></li>
+        <li class="footer-li"><a href="#">Dribbble</a></li>
+        <li class="footer-li"><a href="#">GitHub</a></li>
+      </ul>
+
+
+     </footer>
+
+    
+  </body>
+</html>
